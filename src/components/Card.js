@@ -1,12 +1,15 @@
 import '../styles/card.css';
 
-const Card = () => {
+const Card = ({ comic }) => {
   return (
     <div className='card'>
-      <img alt='poster-characters' />
+      <img
+        src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+        alt='poster comic'
+      />
       <div className='container-title-description'>
-        <h2>nom</h2>
-        <h3>description</h3>
+        <h2>{comic.title}</h2>
+        <h3>{comic.description}</h3>
       </div>
 
       <div className='btn'>Ajouter aux coups de coeur</div>

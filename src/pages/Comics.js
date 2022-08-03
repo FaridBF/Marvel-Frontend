@@ -1,11 +1,11 @@
-import Card from '../components/Card';
+// import Card from '../components/Card';
 import Header from '../components/Header';
 
-const Comics = () => {
+const Comics = ({ comic }) => {
   return (
     <div>
       <Header />
-      <Card />
+      {/* <Card /> */}
     </div>
   );
 };
