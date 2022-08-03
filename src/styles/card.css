@@ -2,7 +2,7 @@
   flex: 1 0 25%;
   min-width: 260px;
   max-width: 280px;
-  height: 550px;
+  height: 635px;
   background: #202020;
   border-radius: 35px;
   margin: 5px;
@@ -48,7 +48,7 @@ h2 {
 
 h3 {
   letter-spacing: 1px;
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin-top: 10px;
 }
 
