@@ -35,10 +35,8 @@ img.header-logo {
 }
 
 nav {
-  font-size: 1.3rem;
-  width: 50%;
-  width: 100px;
-  text-align: center;
+  font-size: 1.1rem;
+  width: 10%;
 }
 
 nav ul {
@@ -49,10 +47,6 @@ nav ul {
 
 a {
   color: #202020;
-}
-
-a nav-active {
-  color: #ee171f;
 }
 
 a:hover {
