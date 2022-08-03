@@ -1,0 +1,34 @@
+/*General Rules*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/*afin que les images ne débordent jamais*/
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #ee171f;
+  color: white;
+}
+li {
+  list-style: none;
+}
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
