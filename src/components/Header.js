@@ -10,7 +10,7 @@ const Header = () => {
     <>
       <div className='header-container'>
         <div className='header-position'>
-          <Link to='/personnages'>
+          <Link to='/'>
             <img className='header-logo' src={logo_marvel} alt='logo_marvel' />
           </Link>
           <nav>
