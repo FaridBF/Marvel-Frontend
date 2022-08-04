@@ -33,7 +33,7 @@ const Personnages = () => {
         //     await axios.get(`https://marvel-backend.herokuapp.com/characters
         // `);
         const response =
-          await axios.get(`https://marvel-backend.herokuapp.com//characters?name=${input}
+          await axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}
       `);
         setData(response.data.results);
         console.log(response.data.results);
@@ -63,9 +63,13 @@ const Personnages = () => {
     <div>
       <Header setInput={setInput} input={input} />
 
-      {data.map((element, index) => {
-        return <Card key={index} element={element} />;
-      })}
+      {data.length === 0 ? (
+        <p>Aucun résultat trouvé</p>
+      ) : (
+        data.map((element, index) => {
+          return <Card key={index} element={element} />;
+        })
+      )}
     </div>
   );
 };
