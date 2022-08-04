@@ -58,11 +58,15 @@ const Comics = () => {
       <Header setInput={setInput} input={input} />
 
       {data.length === 0 ? (
-        <p>No result found</p>
+        <p className='no-result-found'>No result found</p>
       ) : (
-        data.map((element, index) => {
-          return <Card key={index} element={element} />;
-        })
+        <>
+          <div className='container-card'>
+            {data.map((element, index) => {
+              return <Card element={element} key={index} />;
+            })}
+          </div>
+        </>
       )}
     </div>
   );

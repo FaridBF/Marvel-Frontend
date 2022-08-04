@@ -12,14 +12,14 @@ const Card = ({ element }) => {
         alt='poster element'
       />
       <div className='container-title-description'>
-        <h2>
+        <h2 className='card-title'>
           {currentURLPathname === '/characters'
             ? element.name
             : currentURLPathname === '/comics'
             ? element.title
             : ''}
         </h2>
-        <h3>{element.description}</h3>
+        <h3 className='card-description'>{element.description}</h3>
       </div>
 
       <div className='btn'>Add to Favorites</div>

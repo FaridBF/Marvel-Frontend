@@ -1,3 +1,9 @@
+.container-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .card {
   flex: 1 0 25%;
   min-width: 260px;
@@ -40,16 +46,25 @@
   align-items: center;
 }
 
-h2 {
+h2.card-title {
   margin: 24px 0 0px;
   letter-spacing: 1px;
-  line-height: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-h3 {
+h3.card-description {
   letter-spacing: 1px;
   font-size: 1rem;
   margin-top: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn {
