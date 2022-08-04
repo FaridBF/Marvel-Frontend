@@ -16,7 +16,7 @@ const Personnages = () => {
       //   `https://marvel-backend.herokuapp.com/characters?name=${input}`
       // );
       const response =
-        await axios.get(`http://localhost:3000/characters?name=${input}
+        await axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}
       `);
       setData(response.data.results);
       console.log(response.data.results);
@@ -33,7 +33,7 @@ const Personnages = () => {
         //     await axios.get(`https://marvel-backend.herokuapp.com/characters
         // `);
         const response =
-          await axios.get(`http://localhost:3000/characters?name=${input}
+          await axios.get(`https://marvel-backend.herokuapp.com//characters?name=${input}
       `);
         setData(response.data.results);
         console.log(response.data.results);

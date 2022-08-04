@@ -16,7 +16,7 @@ const Comics = () => {
       //   `https://marvel-backend.herokuapp.com/characters?name=${input}`
       // );
       const response =
-        await axios.get(`http://localhost:3000/comics?title=${input}
+        await axios.get(`https://marvel-backend.herokuapp.com/comics?title=${input}
       `);
       setData(response.data.results);
       console.log(response.data.results);
@@ -33,7 +33,7 @@ const Comics = () => {
         //     await axios.get(`https://marvel-backend.herokuapp.com/characters
         // `);
         const response =
-          await axios.get(`http://localhost:3000/comics?title=${input}
+          await axios.get(`https://marvel-backend.herokuapp.com/comics?title=${input}
       `);
         setData(response.data.results);
         console.log(response.data.results);
