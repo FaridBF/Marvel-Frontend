@@ -3,9 +3,10 @@ import axios from 'axios';
 
 import Card from '../components/Card';
 import Header from '../components/Header';
+import '../styles/loading_spinner.css';
 
 const Home = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -25,7 +26,9 @@ const Home = () => {
   }, []);
 
   return isLoading === true ? (
-    <div>En cours de chargement</div>
+    <div class='animation'>
+      <span class='loader loader_spinner'></span>
+    </div>
   ) : (
     <div>
       <Header />
