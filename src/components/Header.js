@@ -1,8 +1,9 @@
 import { NavLink, Link, useLocation } from 'react-router-dom';
+
 import '../styles/header.css';
 import logo_marvel from '../assets/marvel_logo.png';
 
-const Header = () => {
+const Header = ({ input, setInput }) => {
   const location = useLocation();
   const currentURLPathname = location.pathname;
 
@@ -20,15 +21,15 @@ const Header = () => {
                   <NavLink to='/comics'>
                     <li>Comics</li>
                   </NavLink>
-                  <NavLink to='/personnages'>
-                    <li>Personnages</li>
+                  <NavLink to='/characters'>
+                    <li>Characters</li>
                   </NavLink>
                   <NavLink to='/favoris'>
                     <li>Favoris</li>
                   </NavLink>
                 </>
               )}
-              {currentURLPathname === '/personnages' && (
+              {currentURLPathname === '/characters' && (
                 <>
                   <NavLink to='/comics'>
                     <li>Comics</li>
@@ -43,8 +44,8 @@ const Header = () => {
                   <NavLink to='/comics'>
                     <li>Comics</li>
                   </NavLink>
-                  <NavLink to='/personnages'>
-                    <li>Personnages</li>
+                  <NavLink to='/characters'>
+                    <li>Characters</li>
                   </NavLink>
                 </>
               )}
@@ -53,8 +54,8 @@ const Header = () => {
                   <NavLink to='/favoris'>
                     <li>Favoris</li>
                   </NavLink>
-                  <NavLink to='/personnages'>
-                    <li>Personnages</li>
+                  <NavLink to='/characters'>
+                    <li>Characters</li>
                   </NavLink>
                 </>
               )}
@@ -62,7 +63,27 @@ const Header = () => {
           </nav>
           <div className='search-container'>
             <div>
-              <input type='text' className='search-input' />
+              {currentURLPathname === '/comics' ? (
+                <input
+                  type='text'
+                  className='search-input'
+                  value={input}
+                  onChange={(event) => {
+                    setInput(event.target.value);
+                  }}
+                  placeholder='Recherche ton comics préféré'
+                />
+              ) : (
+                <input
+                  type='text'
+                  className='search-input'
+                  value={input}
+                  onChange={(event) => {
+                    setInput(event.target.value);
+                  }}
+                  placeholder='Recherche ton personnage préféré'
+                />
+              )}
             </div>
           </div>
         </div>
