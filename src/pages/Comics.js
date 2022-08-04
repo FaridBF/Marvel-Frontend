@@ -12,9 +12,6 @@ const Comics = () => {
 
   const fetchDataWithInput = async (input) => {
     try {
-      // const response = await axios.get(
-      //   `https://marvel-backend.herokuapp.com/characters?name=${input}`
-      // );
       const response =
         await axios.get(`https://marvel-backend.herokuapp.com/comics?title=${input}
       `);
@@ -29,9 +26,6 @@ const Comics = () => {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        //   const response =
-        //     await axios.get(`https://marvel-backend.herokuapp.com/characters
-        // `);
         const response =
           await axios.get(`https://marvel-backend.herokuapp.com/comics?title=${input}
       `);
@@ -63,9 +57,13 @@ const Comics = () => {
     <div>
       <Header setInput={setInput} input={input} />
 
-      {data.map((element, index) => {
-        return <Card key={index} element={element} />;
-      })}
+      {data.length === 0 ? (
+        <p>No result found</p>
+      ) : (
+        data.map((element, index) => {
+          return <Card key={index} element={element} />;
+        })
+      )}
     </div>
   );
 };

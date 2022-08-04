@@ -24,8 +24,8 @@ const Header = ({ input, setInput }) => {
                   <NavLink to='/characters'>
                     <li>Characters</li>
                   </NavLink>
-                  <NavLink to='/favoris'>
-                    <li>Favoris</li>
+                  <NavLink to='/favorites'>
+                    <li>Favorites</li>
                   </NavLink>
                 </>
               )}
@@ -34,12 +34,12 @@ const Header = ({ input, setInput }) => {
                   <NavLink to='/comics'>
                     <li>Comics</li>
                   </NavLink>
-                  <NavLink to='/favoris'>
-                    <li>Favoris</li>
+                  <NavLink to='/favorites'>
+                    <li>Favorites</li>
                   </NavLink>
                 </>
               )}
-              {currentURLPathname === '/favoris' && (
+              {currentURLPathname === '/favorites' && (
                 <>
                   <NavLink to='/comics'>
                     <li>Comics</li>
@@ -51,8 +51,8 @@ const Header = ({ input, setInput }) => {
               )}
               {currentURLPathname === '/comics' && (
                 <>
-                  <NavLink to='/favoris'>
-                    <li>Favoris</li>
+                  <NavLink to='/favorites'>
+                    <li>Favorites</li>
                   </NavLink>
                   <NavLink to='/characters'>
                     <li>Characters</li>
@@ -71,7 +71,7 @@ const Header = ({ input, setInput }) => {
                   onChange={(event) => {
                     setInput(event.target.value);
                   }}
-                  placeholder='Recherche ton comics préféré'
+                  placeholder='Find your favorite comic'
                 />
               ) : (
                 <input
@@ -81,7 +81,8 @@ const Header = ({ input, setInput }) => {
                   onChange={(event) => {
                     setInput(event.target.value);
                   }}
-                  placeholder='Recherche ton personnage préféré'
+                  placeholder='
+                  Find your favorite character'
                 />
               )}
             </div>

@@ -29,9 +29,6 @@ const Personnages = () => {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        //   const response =
-        //     await axios.get(`https://marvel-backend.herokuapp.com/characters
-        // `);
         const response =
           await axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}
       `);
@@ -64,7 +61,7 @@ const Personnages = () => {
       <Header setInput={setInput} input={input} />
 
       {data.length === 0 ? (
-        <p>Aucun résultat trouvé</p>
+        <p>No result found</p>
       ) : (
         data.map((element, index) => {
           return <Card key={index} element={element} />;

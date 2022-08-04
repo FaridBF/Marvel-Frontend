@@ -1,7 +1,7 @@
 // import Card from '../components/Card';
 import Header from '../components/Header';
 
-const Favoris = () => {
+const Favorites = () => {
   return (
     <div>
       <Header />
@@ -10,4 +10,4 @@ const Favoris = () => {
   );
 };
 
-export default Favoris;
+export default Favorites;

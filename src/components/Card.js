@@ -22,7 +22,7 @@ const Card = ({ element }) => {
         <h3>{element.description}</h3>
       </div>
 
-      <div className='btn'>Ajouter aux coups de coeur</div>
+      <div className='btn'>Add to Favorites</div>
     </div>
   );
 };
