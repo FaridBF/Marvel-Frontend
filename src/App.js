@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Comics from './pages/Comics';
 import Favorites from './pages/Favorites';
 import Characters from './pages/Characters';
+import Video from './components/Video';
 
 const App = () => {
   return (
@@ -10,7 +11,7 @@ const App = () => {
         <Route path='/characters' element={<Characters />} />
         <Route path='/comics' element={<Comics />} />
         <Route path='/favorites' element={<Favorites />} />
-        <Route path='*' element={<Characters />} />
+        <Route path='*' element={<Video />} />
       </Routes>
     </BrowserRouter>
   );
