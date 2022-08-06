@@ -61,32 +61,37 @@ const Header = ({ input, setInput }) => {
               )}
             </ul>
           </nav>
-          <div className='search-container'>
-            <div>
-              {currentURLPathname === '/comics' ? (
-                <input
-                  type='text'
-                  className='search-input'
-                  value={input}
-                  onChange={(event) => {
-                    setInput(event.target.value);
-                  }}
-                  placeholder='Find your favorite comic'
-                />
-              ) : (
-                <input
-                  type='text'
-                  className='search-input'
-                  value={input}
-                  onChange={(event) => {
-                    setInput(event.target.value);
-                  }}
-                  placeholder='
+
+          {currentURLPathname === '/' ? (
+            ''
+          ) : (
+            <div className='search-container'>
+              <div>
+                {currentURLPathname === '/comics' ? (
+                  <input
+                    type='text'
+                    className='search-input'
+                    value={input}
+                    onChange={(event) => {
+                      setInput(event.target.value);
+                    }}
+                    placeholder='Find your favorite comic'
+                  />
+                ) : (
+                  <input
+                    type='text'
+                    className='search-input'
+                    value={input}
+                    onChange={(event) => {
+                      setInput(event.target.value);
+                    }}
+                    placeholder='
                   Find your favorite character'
-                />
-              )}
+                  />
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>
