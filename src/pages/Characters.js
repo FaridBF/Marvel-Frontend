@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// import Pagination from '../components/Pagination';
 import Card from '../components/Card';
 import Header from '../components/Header';
 import '../styles/loading_spinner.css';
+import '../styles/pagination.css';
 
-const Personnages = () => {
+const Characters = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [input, setInput] = useState('');
 
+  const [page, setPage] = useState(1);
+
   const fetchDataWithInput = async (input) => {
     try {
-      // const response = await axios.get(
-      //   `https://marvel-backend.herokuapp.com/characters?name=${input}`
-      // );
       const response =
         await axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}
       `);
@@ -28,19 +29,23 @@ const Personnages = () => {
 
   useEffect(() => {
     try {
-      const fetchData = async () => {
+      const fetchDataPerPage = async () => {
+        let skipData = (page - 1) * 100;
+        // const response =
+        //   axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}&limit=100&skip=${skip}
+        // `);
         const response =
-          await axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}
-      `);
+          await axios.get(`http://localhost:3000/characters?name=${input}&limit=100&skip=${skipData}
+        `);
         setData(response.data.results);
-        console.log(response.data.results);
         setIsLoading(false);
       };
-      fetchData();
+      fetchDataPerPage();
     } catch (error) {
+      alert('An error has occured while fetching data.');
       console.log(error.message);
     }
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     if (input.length > 0) {
@@ -57,18 +62,37 @@ const Personnages = () => {
       <span className='loader loader_spinner'></span>
     </div>
   ) : (
-    <div>
+    <>
       <Header setInput={setInput} input={input} />
 
       {data.length === 0 ? (
-        <p>No result found</p>
+        <p className='no-result-found'>No result found</p>
       ) : (
-        data.map((element, index) => {
-          return <Card key={index} element={element} />;
-        })
+        <div className='container-card'>
+          {data.map((element, index) => {
+            return <Card element={element} key={index} />;
+          })}
+        </div>
       )}
-    </div>
+      <div className='pagination-row'>
+        <button
+          className='page-item'
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+        >
+          -
+        </button>
+        <p className='numerotation-pages'>{page}</p>
+        <button
+          className='page-item'
+          onClick={() => setPage(page + 1)}
+          disabled={data.length < 100}
+        >
+          +
+        </button>
+      </div>
+    </>
   );
 };
 
-export default Personnages;
+export default Characters;
