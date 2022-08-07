@@ -18,13 +18,13 @@ const Characters = () => {
   const [favorites, setFavorites] = useState([]);
   const favoritesInLocalStorage = JSON.parse(localStorage.getItem('favorites'));
 
-  const fetchDataWithInput = async (input) => {
+  const fetchData = async (input) => {
     try {
+      let skipData = (page - 1) * 100;
       const response =
-        await axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}
+        await axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}&limit=100&skip=${skipData}
       `);
       setData(response.data.results);
-      console.log(response.data.results);
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
@@ -33,43 +33,17 @@ const Characters = () => {
 
   useEffect(() => {
     try {
-      const fetchDataPerPage = async () => {
-        let skipData = (page - 1) * 100;
-        // const response =
-        //   axios.get(`https://marvel-backend.herokuapp.com/characters?name=${input}&limit=100&skip=${skip}
-        // `);
-        const response =
-          await axios.get(`http://localhost:3000/characters?name=${input}&limit=100&skip=${skipData}
-        `);
-        setData(response.data.results);
-        setIsLoading(false);
-      };
-      fetchDataPerPage();
-    } catch (error) {
-      alert('An error has occured while fetching data.');
-      console.log(error.message);
-    }
-  }, [page]);
-
-  useEffect(() => {
-    if (input.length > 0) {
-      try {
-        fetchDataWithInput(input);
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-  }, [input]);
-
-  useEffect(() => {
-    try {
+      // récupérer la data de l'API
+      fetchData(input);
+      // récupérer les favoris depuis le localStorage
       if (favoritesInLocalStorage) {
         setFavorites(favoritesInLocalStorage);
       }
     } catch (error) {
+      alert('An error has occured while fetching data.');
       console.log(error.message);
     }
-  }, []);
+  }, [page, input]);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
