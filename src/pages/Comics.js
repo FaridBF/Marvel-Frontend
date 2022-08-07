@@ -9,6 +9,9 @@ const Comics = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [input, setInput] = useState('');
+  // gestion des favoris
+  const favoritesInStorage = JSON.parse(localStorage.getItem('favorites'));
+  const [favorites, setFavorites] = useState([]);
 
   const fetchDataWithInput = async (input) => {
     try {
@@ -30,13 +33,18 @@ const Comics = () => {
           await axios.get(`https://marvel-backend.herokuapp.com/comics?title=${input}
       `);
         setData(response.data.results);
-        console.log(response.data.results);
         setIsLoading(false);
       };
       fetchData();
     } catch (error) {
       console.log(error.message);
     }
+    // au chargement de Comics, si favoris existent ds localStorage,
+    // les récupérer dans tableau favorites
+    if (favoritesInStorage) {
+      setFavorites(favoritesInStorage);
+    }
+    console.log(favoritesInStorage);
   }, []);
 
   useEffect(() => {
@@ -48,6 +56,11 @@ const Comics = () => {
       }
     }
   }, [input]);
+
+  useEffect(() => {
+    // Mettre à jour le localStorage, dès que le tableau 'favorites' en local est màj
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   return isLoading === true ? (
     <div className='animation'>
@@ -63,7 +76,14 @@ const Comics = () => {
         <>
           <div className='container-card'>
             {data.map((element, index) => {
-              return <Card element={element} key={index} />;
+              return (
+                <Card
+                  element={element}
+                  favorites={favorites}
+                  setFavorites={setFavorites}
+                  key={index}
+                />
+              );
             })}
           </div>
         </>

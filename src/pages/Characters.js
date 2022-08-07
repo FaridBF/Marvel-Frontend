@@ -10,9 +10,13 @@ import '../styles/pagination.css';
 const Characters = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  //gestion de la barre de recherche
   const [input, setInput] = useState('');
-
+  //gestion de la pagination
   const [page, setPage] = useState(1);
+  //gestion des favorites
+  const [favorites, setFavorites] = useState([]);
+  const favoritesInLocalStorage = JSON.parse(localStorage.getItem('favorites'));
 
   const fetchDataWithInput = async (input) => {
     try {
@@ -57,6 +61,20 @@ const Characters = () => {
     }
   }, [input]);
 
+  useEffect(() => {
+    try {
+      if (favoritesInLocalStorage) {
+        setFavorites(favoritesInLocalStorage);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
   return isLoading === true ? (
     <div className='animation'>
       <span className='loader loader_spinner'></span>
@@ -70,7 +88,14 @@ const Characters = () => {
       ) : (
         <div className='container-card'>
           {data.map((element, index) => {
-            return <Card element={element} key={index} />;
+            return (
+              <Card
+                favorites={favorites}
+                setFavorites={setFavorites}
+                element={element}
+                key={index}
+              />
+            );
           })}
         </div>
       )}

@@ -16,7 +16,34 @@ const Header = ({ input, setInput }) => {
           </Link>
           <nav>
             <ul>
-              {currentURLPathname === '/' && (
+              {currentURLPathname === '/characters' ? (
+                <>
+                  <NavLink to='/comics'>
+                    <li>Comics</li>
+                  </NavLink>
+                  <NavLink to='/favorites'>
+                    <li>Favorites</li>
+                  </NavLink>
+                </>
+              ) : currentURLPathname === '/favorites' ? (
+                <>
+                  <NavLink to='/comics'>
+                    <li>Comics</li>
+                  </NavLink>
+                  <NavLink to='/characters'>
+                    <li>Characters</li>
+                  </NavLink>
+                </>
+              ) : currentURLPathname === '/comics' ? (
+                <>
+                  <NavLink to='/favorites'>
+                    <li>Favorites</li>
+                  </NavLink>
+                  <NavLink to='/characters'>
+                    <li>Characters</li>
+                  </NavLink>
+                </>
+              ) : (
                 <>
                   <NavLink to='/comics'>
                     <li>Comics</li>
@@ -26,72 +53,40 @@ const Header = ({ input, setInput }) => {
                   </NavLink>
                   <NavLink to='/favorites'>
                     <li>Favorites</li>
-                  </NavLink>
-                </>
-              )}
-              {currentURLPathname === '/characters' && (
-                <>
-                  <NavLink to='/comics'>
-                    <li>Comics</li>
-                  </NavLink>
-                  <NavLink to='/favorites'>
-                    <li>Favorites</li>
-                  </NavLink>
-                </>
-              )}
-              {currentURLPathname === '/favorites' && (
-                <>
-                  <NavLink to='/comics'>
-                    <li>Comics</li>
-                  </NavLink>
-                  <NavLink to='/characters'>
-                    <li>Characters</li>
-                  </NavLink>
-                </>
-              )}
-              {currentURLPathname === '/comics' && (
-                <>
-                  <NavLink to='/favorites'>
-                    <li>Favorites</li>
-                  </NavLink>
-                  <NavLink to='/characters'>
-                    <li>Characters</li>
                   </NavLink>
                 </>
               )}
             </ul>
           </nav>
 
-          {currentURLPathname === '/' ? (
-            ''
-          ) : (
-            <div className='search-container'>
-              <div>
-                {currentURLPathname === '/comics' ? (
-                  <input
-                    type='text'
-                    className='search-input'
-                    value={input}
-                    onChange={(event) => {
-                      setInput(event.target.value);
-                    }}
-                    placeholder='Find your favorite comic'
-                  />
-                ) : (
-                  <input
-                    type='text'
-                    className='search-input'
-                    value={input}
-                    onChange={(event) => {
-                      setInput(event.target.value);
-                    }}
-                    placeholder='
+          <div className='search-container'>
+            <div>
+              {currentURLPathname === '/comics' ? (
+                <input
+                  type='text'
+                  className='search-input'
+                  value={input}
+                  onChange={(event) => {
+                    setInput(event.target.value);
+                  }}
+                  placeholder='Find your favorite comic'
+                />
+              ) : currentURLPathname === '/characters' ? (
+                <input
+                  type='text'
+                  className='search-input'
+                  value={input}
+                  onChange={(event) => {
+                    setInput(event.target.value);
+                  }}
+                  placeholder='
                   Find your favorite character'
-                  />
-                )}
-              </div>
+                />
+              ) : (
+                ''
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </>
