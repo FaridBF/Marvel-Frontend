@@ -94,3 +94,7 @@ h3.card-description {
   color: #ee171f;
   background: #202020;
 }
+
+.disabled-link {
+  pointer-events: none;
+}
